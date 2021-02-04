@@ -1,5 +1,5 @@
-# Azure Dev Spaces GitHub Action for adding the review url on pull request
-Azure Dev Spaces can provide reviewers a live, sandboxed preview of the pull request's changes before code is merged into the main branch. The add-review-url GitHub Action writes the URL of the preview app as a comment on the pull request.
+# Azure GitHub Action for adding the review url on pull request
+This Action can provide reviewers a live, sandboxed preview of the pull request's changes before code is merged into the main branch. The add-review-url GitHub Action writes the URL of the preview app as a comment on the pull request.
 
 ## How to include this action in our pull request workflow
 Refer to the documentation for [Azure Dev-spaces sample app](https://github.com/Azure/dev-spaces/) - [Pull Request Flow Documentation for Azure Dev Spaces](https://aka.ms/devspaces/pr-flow#configure-your-github-action)
@@ -10,8 +10,7 @@ The following Action snippet is used in the [Bikesharing sample PR workflow ](ht
     - uses: azure/dev-spaces/actions/add-review-url@Releases/v2              
         with:
             repo-token: ${{ secrets.GITHUB_TOKEN }}  
-            branch-name: ${{steps.generate-valid-branch-name.outputs.result}}
-            host: ${{ secrets.HOST }}
+            fqdn: ${{ env.fqdn }}
  ```       
 where secrets.HOST is the host URL for the app deployed in AKS. See [Pull Request Flow Documentation for Azure Dev Spaces](https://aka.ms/devspaces/pr-flow#configure-your-github-action)
 
